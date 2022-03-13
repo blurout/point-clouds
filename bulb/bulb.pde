@@ -1,24 +1,24 @@
 import peasy.*;
 
-int DIM = 300;
+int DIM = 160;
 PeasyCam cam;
 ArrayList<PVector> mandelbulb = new ArrayList<PVector>();
 
 void setup() {
-  size(1200, 1200, P3D);
+  size(1800, 1800, P3D);
   cam = new PeasyCam(this, 500);
 
 
-  for (int i = 0; i < DIM-50; i++) {
-    for (int j = 0; j < DIM-50; j++) {
+  for (int i = 0; i < DIM; i++) {
+    for (int j = 0; j < DIM; j++) {
       boolean edge = false;
-      for (int k = 0; k < DIM+10; k++) {
+      for (int k = 0; k < DIM; k++) {
         float x = map(i, 0, DIM, -1, 1);
         float y = map(j, 0, DIM, -1, 1);
         float z = map(k, 0, DIM, -1, 1);
         PVector zeta = new PVector(0, 0, 0);
         int n = 12;
-        int maxiterations = 30;
+        int maxiterations = 22;
         int iteration = 0;
         while (true) {
           Spherical c = spherical(zeta.x, zeta.y, zeta.z);
@@ -78,7 +78,7 @@ void draw() {
   rotateY(-PI/3);
   for (PVector v : mandelbulb) {
     stroke(200,0,255);
-    strokeWeight(1);
+    strokeWeight(1.5);
     point(v.x*200, v.y*200, v.z*200);
   }
 }
